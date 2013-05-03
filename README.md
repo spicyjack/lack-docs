@@ -1,4 +1,4 @@
-# Documentation for LACK (Linux Appliance Construction Kit) #
+# LACK (Linux Appliance Construction Kit) Documentation #
 
 Repo: https://github.com/spicyjack/lack-docs
 
