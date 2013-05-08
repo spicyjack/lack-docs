@@ -10,6 +10,7 @@ Shared library dependency tool
   that required files are present in order to satisfy library dependencies
 
 ## Todos ##
+- Graph dependencies with GraphViz
 - App::SharedLibraryDeps::Cache
   - make sure to resolve symlinks somewhere, and store them in the
     file object
