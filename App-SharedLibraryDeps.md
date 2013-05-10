@@ -8,6 +8,7 @@ Shared library dependency tool
   (if any)
 - (Optional) Can use a kernel filelist instead of the system for verifying
   that required files are present in order to satisfy library dependencies
+- (Optional) Works on other operating systems besides Linux
 
 ## Todos ##
 - Graph dependencies with GraphViz
