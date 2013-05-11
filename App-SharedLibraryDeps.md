@@ -32,4 +32,13 @@ Shared library dependency tool
     - BinaryFile
       - Has forward dependencies only
 
+## Recursion pseudocode ##
+The main program sends a file to the Cache, and asks...
+- What are the file's dependencies?
+- For each dependency
+  - Is it stored in the cache?
+    - Yes, return it
+    - No, recurse with it; recursing should cause the dependency to be added
+      to the cache at some point
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
