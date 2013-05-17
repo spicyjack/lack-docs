@@ -32,13 +32,22 @@ Shared library dependency tool
     - BinaryFile
       - Has forward dependencies only
 
-## Recursion pseudocode ##
-The main program sends a file to the Cache, and asks...
-- What are the file's dependencies?
+## Dependency Recursion pseudocode ##
+- Get a list of dependencies for a file
 - For each dependency
   - Is it stored in the cache?
-    - Yes, return it
-    - No, recurse with it; recursing should cause the dependency to be added
-      to the cache at some point
-
+    - Yes 
+      - Return cached file object
+    - No
+      - Turn the file into a file object
+      - Run `ldd` to get it's dependencies
+      - Classify dependencies
+        - Files that are also dynamically linked and not cached, recurse with
+          them
+          - Return with a list of dependencies; at some point, you should be
+            returning with only the ld-linux and linux-vdso files
+        - Files that are statically linked or virtual files, add them to the
+          cache, then move to the next file
+      - Add dependencies to the file object
+      - Add reverse dependencies
 vim: filetype=markdown shiftwidth=2 tabstop=2
