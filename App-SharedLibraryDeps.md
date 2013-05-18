@@ -50,4 +50,5 @@ Shared library dependency tool
           cache, then move to the next file
       - Add dependencies to the file object
       - Add reverse dependencies
+
 vim: filetype=markdown shiftwidth=2 tabstop=2
