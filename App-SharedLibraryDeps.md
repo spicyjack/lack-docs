@@ -6,8 +6,10 @@ Shared library dependency tool
 - Gets a list of library dependencies for a given library file
 - (Optional) gets the name of the package the linked-to library came from
   (if any)
-- (Optional) Can use a kernel filelist instead of the system for verifying
-  that required files are present in order to satisfy library dependencies
+- (Optional) Uses a kernel filelist as input, and walks the filelist to verify
+  that all of the library dependencies are present
+  - This would need to be done on the donor system to make sure that all
+    library files are available for parsing/recursion/verification
 - (Optional) Works on other operating systems besides Linux
 
 ## Todos ##
