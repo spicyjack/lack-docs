@@ -51,20 +51,25 @@ build minimized "packages" that can then be used on a system that runs off of
 - Build an install a kernel; the kernel modules will then become available for
   packacing in `/lib/modules`, and `gen_init_cpio` will become available in
   `/usr/src/linux` for creating the initramfs file.
-- Use `lackpkgtool.sh` to generate a 'recpie' for a 'package'.  
+- Use `lackpkgtool.sh` to generate a 'recipe' for a 'package'.
   - A 'recipe' is a list of files formatted in such a way so that the
     `gen_init_cpio` tool can be run against it, in order to build either
     initramfs images or external squashfs package files
   - A LACK distribution will contain one or more of these recipes that will be
-    used to build the initramfs image.  You can concatenate filelists together
-    to make recipe/package management a little bit easier.
+    used to build the initramfs image.  You can concatenate filelists in order
+    to build a larger file/initramfs image, in order to make recipe/package
+    management a little bit easier.
+  - `bash lackpkgtool.sh --package --listout -- <package name> > recipe.txt`
 - Use `make_initramfs.sh` to create an Linux initramfs image.
+  - `make_initramfs.sh` reads the recipe files created with `lackpkgtool.sh`
+    and passeѕ them along to `gen_init_cpio`, which then adds those files to
+    the CPIO archive with the correct ownership and permissions
 - Once you have a new initramfs image, you can use something like
   `[sys|iso]linux` to boot from a USB stick or CD-ROM, or `pxelinux` to boot
   your new image over the network.  `pxelinux` is recommended because it
   vastly shortens development time, you don't have to re-upload the initramfs
   to your media, you just reboot the machine with the new initramfs image in
-  place.
+  place on your TFTP server.
 
 - Install base system
 - Build a new kernel, or use an existing kernel
